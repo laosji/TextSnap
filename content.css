@@ -1,0 +1,153 @@
+
+
+// content.css
+.text-share-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  max-width: 500px;
+  min-width: 320px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.card-content-wrapper {
+  position: relative;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.quote-icon {
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  font-size: 60px;
+  color: #4CAF50;
+  font-family: Georgia, serif;
+  opacity: 0.3;
+}
+
+.card-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #2c3e50;
+  margin: 15px 0;
+  white-space: pre-wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.card-source {
+  font-size: 14px;
+  color: #666;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.card-timestamp {
+  font-size: 12px;
+  color: #999;
+  margin-top: 8px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.action-button .icon {
+  font-size: 16px;
+}
+
+.copy-button {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.copy-button:hover {
+  background: #e0e0e0;
+}
+
+.share-button {
+  background: #1DA1F2;
+  color: white;
+}
+
+.share-button:hover {
+  background: #1a91da;
+}
+
+.download-button {
+  background: #4CAF50;
+  color: white;
+}
+
+.download-button:hover {
+  background: #45a049;
+}
+
+.close-button {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+.toast-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 10001;
+  animation: fadeInOut 3s ease;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, 20px); }
+  10% { opacity: 1; transform: translate(-50%, 0); }
+  90% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, -20px); }
+}
