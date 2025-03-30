@@ -32,7 +32,7 @@ TextSnap 是一个简单而强大的 Chrome 扩展，用于将网页上的文本
 ## 🖼️ 使用展示
 
 <p align="center">
-  <img src="path/to/screenshot1.png" alt="TextSnap 演示" width="600">
+  <img width="920" alt="image" src="https://github.com/user-attachments/assets/ace038b2-f0c3-44ac-aee6-2a4622369b6b" alt="TextSnap 演示" width="600">
 </p>
 
 ## 🚀 如何使用
