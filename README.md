@@ -5,7 +5,7 @@
 # TextSnap
 
 <p align="center">
-  <img src="path/to/your/logo.png" alt="TextSnap Logo" width="128" height="128">
+  <img src="images/icon128.png" alt="TextSnap Logo" width="128" height="128">
 </p>
 
 <p align="center">
