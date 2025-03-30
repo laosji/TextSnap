@@ -1,8 +1,4 @@
 # TextSnap
-用图片一键分享网页选中内容，选中即刻分享。
-<img width="1680" alt="image" src="https://github.com/user-attachments/assets/ddd54eeb-7e7b-4802-a612-f84b42fe919a" />
-<img width="1680" alt="image" src="https://github.com/user-attachments/assets/ee3bb02d-6cda-40b9-9fe0-a8f437eb5580" />
-# TextSnap
 
 <p align="center">
   <img src="images/icon128.png" alt="TextSnap Logo" width="128" height="128">
@@ -29,8 +25,10 @@ TextSnap 是一个简单而强大的 Chrome 扩展，用于将网页上的文本
 - **便捷分享**: 轻松复制、下载或直接分享到社交媒体
 - **轻量级**: 不影响浏览体验的轻量设计
 
-## 🖼️ 使用展示
-
+## TextSnap🖼️ 使用展示
+用图片一键分享网页选中内容，选中即刻分享。
+<img width="1680" alt="image" src="https://github.com/user-attachments/assets/ddd54eeb-7e7b-4802-a612-f84b42fe919a" />
+<img width="1680" alt="image" src="https://github.com/user-attachments/assets/ee3bb02d-6cda-40b9-9fe0-a8f437eb5580" />
 <p align="center">
   <img width="920" alt="image" src="https://github.com/user-attachments/assets/ace038b2-f0c3-44ac-aee6-2a4622369b6b" alt="TextSnap 演示" width="600">
 </p>
