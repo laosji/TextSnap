@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <a href="https://chrome.google.com/webstore/detail/textsnap/your-extension-id">
+  <a href="https://chrome.google.com/webstore/detail/textsnap/ppofpngjjejphlkaijlchilcbekakaig">
     <img src="https://img.shields.io/badge/Chrome-安装扩展-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Chrome Web Store">
   </a>
 </p>
