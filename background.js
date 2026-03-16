@@ -25,7 +25,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
         // 如果content script未注入，则注入它
         await chrome.scripting.executeScript({
           target: { tabId: tab.id },
-          files: ['content.js']
+          files: ['html2canvas.min.js', 'content.js']
         });
       }
 

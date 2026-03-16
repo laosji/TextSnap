@@ -5,15 +5,25 @@ async function generateImage(content) {
     throw new Error('html2canvas not loaded');
   }
 
-  const canvas = await window.html2canvas(content, {
-    willReadFrequently: true,
-    backgroundColor: '#FFFFFF',
-    scale: 2,
-    logging: false,
-    useCORS: true,
-    removeContainer: true
-  });
-  return canvas;
+  // Clone the element offscreen to avoid issues with modal positioning
+  const clone = content.cloneNode(true);
+  clone.style.position = 'absolute';
+  clone.style.left = '-9999px';
+  clone.style.top = '0';
+  document.body.appendChild(clone);
+
+  try {
+    const canvas = await window.html2canvas(clone, {
+      backgroundColor: '#FFFFFF',
+      scale: 2,
+      logging: false,
+      useCORS: true,
+      allowTaint: true
+    });
+    return canvas;
+  } finally {
+    clone.remove();
+  }
 }
 
 // 创建弹窗样式
@@ -168,6 +178,38 @@ style.textContent = `
     height: 20px;
   }
 
+  .color-picker {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .color-picker-label {
+    font-size: 13px;
+    color: #999;
+    margin-right: 2px;
+  }
+
+  .color-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .color-dot:hover {
+    transform: scale(1.15);
+  }
+
+  .color-dot.active {
+    border-color: #6750A4;
+    box-shadow: 0 0 0 2px rgba(103, 80, 164, 0.3);
+  }
+
   @media (max-width: 768px) {
     .card-modal {
       width: 90vw;
@@ -233,6 +275,15 @@ async function createCardModal(selectedText) {
         <div class="card-preview-title">TextSnap</div>
         <div class="card-preview-content"></div>
       </div>
+      <div class="color-picker">
+        <span class="color-picker-label">背景色</span>
+        <div class="color-dot active" data-bg="#F8F5FF" data-text="#1C1B1F" style="background:#F8F5FF"></div>
+        <div class="color-dot" data-bg="#E8F5E9" data-text="#1B5E20" style="background:#E8F5E9"></div>
+        <div class="color-dot" data-bg="#FFF3E0" data-text="#E65100" style="background:#FFF3E0"></div>
+        <div class="color-dot" data-bg="#E3F2FD" data-text="#0D47A1" style="background:#E3F2FD"></div>
+        <div class="color-dot" data-bg="#FCE4EC" data-text="#880E4F" style="background:#FCE4EC"></div>
+        <div class="color-dot" data-bg="#1C1B1F" data-text="#E0E0E0" style="background:#1C1B1F"></div>
+      </div>
     </div>
     <div class="button-container">
       <button type="button" class="button secondary-button" id="copyBtn">
@@ -286,6 +337,17 @@ async function createCardModal(selectedText) {
   });
 
   document.addEventListener('keydown', handleKeyDown);
+
+  // 背景色选择
+  modal.querySelectorAll('.color-dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+      modal.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+      dot.classList.add('active');
+      const contentEl = modal.querySelector('.card-preview-content');
+      contentEl.style.background = dot.dataset.bg;
+      contentEl.style.color = dot.dataset.text;
+    });
+  });
 
   // 复制按钮事件
   modal.querySelector('#copyBtn').addEventListener('click', async () => {
