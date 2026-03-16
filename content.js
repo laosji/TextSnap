@@ -301,23 +301,18 @@ async function createCardModal(selectedText) {
         throw new Error('Canvas generation failed');
       }
 
-      canvas.toBlob(async (blob) => {
-        if (!blob) {
-          throw new Error('Blob creation failed');
-        }
+      // Convert canvas to blob while staying in the same async chain
+      // (toBlob callback breaks the user gesture context)
+      const dataUrl = canvas.toDataURL('image/png');
+      const res = await fetch(dataUrl);
+      const blob = await res.blob();
 
-        try {
-          const clipboardItem = new ClipboardItem({ 'image/png': blob });
-          await navigator.clipboard.write([clipboardItem]);
-          showToast('已复制到剪贴板');
-        } catch (error) {
-          console.error('复制到剪贴板失败:', error);
-          showToast('复制失败，请重试');
-        }
-      }, 'image/png');
+      const clipboardItem = new ClipboardItem({ 'image/png': blob });
+      await navigator.clipboard.write([clipboardItem]);
+      showToast('已复制到剪贴板');
     } catch (error) {
-      console.error('生成图片失败:', error);
-      showToast('生成图片失败，请重试');
+      console.error('复制到剪贴板失败:', error);
+      showToast('复制失败，请重试');
     }
   });
 
