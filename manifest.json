@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "TextSnap",
+  "version": "1.0",
+  "description": "分享从未如此美妙",
+  "privacy_policy":"https://www.privacypolicies.com/live/faf9d7d0-1218-413f-bf6f-50aaaecaee06",
+  "host_permissions": [
+    "https://textsnap-8la7e0k.gamma.site/"
+  ],
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["html2canvas.min.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "web_accessible_resources": [{
+    "resources": ["html2canvas.min.js"],
+    "matches": ["<all_urls>"]
+  }],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; style-src 'self' 'unsafe-inline'",
+    "sandbox": "sandbox allow-scripts allow-forms allow-popups allow-modals; script-src 'self' 'unsafe-inline' 'unsafe-eval'; child-src 'self'"
+  }
+}
